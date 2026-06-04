@@ -1,0 +1,448 @@
+@import url('https://googleapis.com');
+
+:root {
+    --blackBackground:#000000;
+    --computerGreen:#39FF14;
+    --terminalBackground:#1E1E1E;
+    --closeWindow:#ff0000;
+    --minimizeWindow:#ffa500;
+    --fullScreenWindow:#008000;
+    --errorRed: #FF3131;
+    --buttonBackground: #2B2B2B;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    cursor: url('./assets/cursor.png') 28 14, auto;
+}
+
+body {
+    background-color: var(--terminalBackground);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0, 0, 0, 0.18) 3px,
+        rgba(0, 0, 0, 0.18) 4px
+    );
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 45%,
+        rgba(57, 255, 20, 0.035) 50%,
+        transparent 55%,
+        transparent 100%
+    );
+    animation: crt-roll 8s linear infinite;
+}
+
+.screen.active:not(#desktopScreen) {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    width: 75vw;
+    border-radius: 0.75rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--blackBackground);
+    color: var(--computerGreen);
+}
+
+.screen {
+    display: none;
+}
+
+#mainScreen {
+    flex-direction: column;
+    background-color: var(--blackBackground);
+    color: var(--computerGreen);
+    border-radius: .75rem;
+}
+
+.options {
+    border-radius: 50%;
+    height: 3vh;
+    width: 2vw;
+}
+
+.close {
+    background-color: var(--closeWindow);
+    border: transparent;
+}
+
+.minimize {
+    background-color: var(--minimizeWindow);
+    border: transparent
+}
+
+.fullscreen {
+    background-color: var(--fullScreenWindow);
+    border: transparent
+}
+
+#windowOptions {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.appName {
+    margin-left: auto;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+}
+
+#windowOptionsBtnContainer {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+#indexInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.indexFields, .indexFields::placeholder {
+    font-style: italic;
+    caret-shape: block;
+    caret-color: var(--computerGreen);
+    width: 25vw;
+    color: var(--computerGreen);
+    background-color: var(--terminalBackground);
+}
+
+#indexMainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#contentWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+#textWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#signUpMain {
+    color: var(--computerGreen);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#desktopScreen {
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#menuBar, #taskBar {
+    height: 7vh;
+    width: 100%;
+    background-color: var(--terminalBackground);
+}
+
+#desktop {
+    height: 86vh;
+    width: 100%;
+    background-image: url('./assets/wallpaper.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+#desktop, #menuBar, #taskBar {
+    opacity: 0.5;
+}
+
+#rowOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vh;
+}
+
+label {
+    font-size: 0.75rem;
+    
+}
+
+#storyBtn, #messagesBtn, #picturesBtn, #gifsBtn {
+    width: 6vw;
+    height: 12vh;
+    background-color: transparent;
+    border: transparent;
+    overflow: hidden;
+}
+
+.appIcons {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#menuBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--computerGreen);
+}
+
+#clock {
+    padding-right: 1rem;
+    margin-left: auto;
+}
+
+#menuBarMenu {
+    padding-left: 1rem;
+    margin-right: auto;
+    border: transparent;
+    background-color: transparent;
+    overflow: hidden;
+    height: 7vh;
+}
+
+#menuBar > #messageOfDay {
+    font-size: medium;
+}
+
+#menuBarIcon {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#startMenuBtn {
+    padding-left: 1rem;
+    margin-right: auto;
+    border: transparent;
+    background-color: transparent;
+    overflow: hidden;
+    height: 7vh;
+}
+
+#startMenuLogo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#startMenu {
+    position: fixed;
+    width: 21rem;
+    height: 15rem;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--terminalBackground);
+    border-bottom-right-radius: .75rem;
+}
+
+#menuBarBtns {
+    height: 7vh;
+    overflow: hidden;
+}
+
+#aboutPopUp:not(#closeAbout) {
+    background-color: var(--terminalBackground);
+    height: 50vh;
+    width: 30vw;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .75rem;
+}
+
+#shutdownPopUp {
+    background-color: var(--terminalBackground);
+    color: var(--computerGreen);
+    height: 50vh;
+    width: 30vw;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .75rem;
+}
+
+#aboutLogo {
+    height: 18vh;
+    width: 10vw;
+}
+
+#figAbout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--computerGreen);
+    text-align: center;
+}
+
+.popUpClose {
+    border-radius: 50%;
+    background-color: var(--closeWindow);
+    border: transparent;
+    height: 4vh;
+    width: 3vw;
+    
+}
+
+#closeAbout {
+    padding-top: .5rem;
+}
+
+#realStartMenu {
+    position: fixed;
+    width: 21rem;
+    height: 15rem;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    background-color: var(--terminalBackground);
+    border-top-right-radius: .75rem;
+}
+
+#appCategories {
+    background-color: pink;
+    width: 10.5rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#rightSideContainer {
+    width: 10.5rem;
+    height: 15rem;
+    background-color: aqua;
+    border-top-right-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#startMenuSearch {
+    border-top-right-radius: 0.75rem;
+}
+
+#appsOrSearch {
+    background-color: bisque;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.applicationWindow {
+    background-color: var(--blackBackground);
+    color: var(--computerGreen);
+    height: 65vh;
+    width: 75vw;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.applicationOptions {
+    display: flex;
+    align-items: center;
+}
+
+.optionsContainer {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+ul {
+    width: 100%;
+}
+
+li {
+    width: 100%;
+}
+
+.startMenuBtns {
+    width: 100%;
+}
+
+#titleStart {
+    height: 3vh;
+}
+
+.introButtons {
+    border: transparent;
+    height: 7vh;
+    text-align: center;
+    width: 25vw;
+    border-radius: 5px;
+    background-color: var(--buttonBackground);
+    color: var(--computerGreen);
+}
+
+@keyframes crt-flicker {
+    0%, 100% { opacity: 1; }
+    92%       { opacity: 0.85; }
+    93%       { opacity: 1; }
+    96%       { opacity: 0.92; }
+    97%       { opacity: 1; }
+}
+
+@keyframes crt-roll {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes crt-glow-pulse {
+    0%, 100% { text-shadow: 0 0 4px #39FF14, 0 0 10px rgba(57, 255, 20, 0.5); }
+    50%       { text-shadow: 0 0 6px #39FF14, 0 0 16px rgba(57, 255, 20, 0.7), 0 0 30px rgba(57, 255, 20, 0.2); }
+}

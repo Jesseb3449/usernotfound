@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>User-Not-Found</title>
+</head>
+<body>
+    
+    <div id="appContainer">
+       <div id="mainScreen" class="screen active">
+        <section id="windowOptions">
+        <section id ="windowOptionsBtnContainer">
+            <button class="options close"></button>
+            <button class="options minimize"></button>
+            <button class="options fullscreen"></button>
+        </section>
+        <p class="appName">Computer-Start-Up.vs</p>
+       </section> 
+
+       <section id="contentWrapper">
+        <section id="windowContainer">
+            <section id="indexHeadContent">
+                <h1>User-Not-Found</h1>
+                <p>A Retro-Themed Horror Game</p>
+                <h2>To login, enter your credentials</h2>
+            </section>
+
+            <section id="indexMainContent">
+                <section id="indexInputContainer">
+                    <input type="text" placeholder="Username" id="usernameText" class="indexFields">
+                    <input type="password" placeholder="Password" id="passwordText" class="indexFields">
+                </section>
+                <section>
+                    <button id="indexLogin" class="introButtons">Login</button>
+                    <p>Or</p>
+                    <button id="indexSign" class="introButtons">Create New User</button>
+                </section>
+                <p id="loginNotFound" style="display: none;"></p>
+            </section>
+       </section>
+    </div>
+       </section>
+
+
+
+    <div id="signUpScreen" class="screen ">
+        <section id="windowOptions">
+        <section id ="windowOptionsBtnContainer">
+            <button class="options close"></button>
+            <button class="options minimize"></button>
+            <button class="options fullscreen"></button>
+        </section>
+        <p class="appName">Computer-Start-Up.vs</p>
+       </section> 
+
+        <section id="contentWrapper">
+        <section id="windowContainer">
+            <section id="indexHeadContent">
+                <h1>Create User</h1>
+            </section>
+
+            <section id="signUpMain">
+                <section id="textWrapper">
+                    <input id="createUser"type="text" placeholder="Username" class="indexFields" required>
+                    <input id="createPass" type="text" placeholder="Password" class="indexFields" required>
+                </section>
+                <button id="createUserBtn" class="introButtons">Create User</button>
+                <p style="display: none;" id="displayError"></p>
+            </section>
+
+    </div>
+
+    <div id="desktopScreen" class="screen ">
+        <section id="menuBar" style="display: none;">
+            <button id="menuBarMenu">
+                <img src="./assets/menubarlogo.png" id="menuBarIcon">
+            </button>
+            <p id="messageOfDay"></p>
+            <p id="clock"></p>
+        </section>
+
+        <section id="desktop" style="display: none;">
+            <section id="rowOne">
+                <button id="storyBtn">
+                    <img id="storyBtnIcon" class="appIcons" src="./assets/storyappicon.png">
+                </button>
+                <label>Story</label>
+                <button id="messagesBtn">
+                    <img id="messagesBtnIcon" class="appIcons" src="./assets/messageIcon.png">
+                </button>
+                <label>Messages</label>
+                <button id="picturesBtn">
+                    <img id="picturesBtnIcon" class="appIcons" src="./assets/pictureappicon.png">
+                </button>
+                <label>Pictures</label>
+                <button id="gifsBtn">
+                    <img id="gifsBtnIcon" class="appIcons" src="./assets/gifappicon.png">
+                </button>
+                <label>Gifs</label>
+            </section>
+        </section>
+
+        <section id="taskBar" style="display: none;">
+            <button id="startMenuBtn">
+                <img src="./assets/startmenulogo.png" id="startMenuLogo">
+            </button>
+        </section>
+    </div>
+    <!--appContainer ending div, DONT REMOVE-->
+    </div>
+    <!--appContainer ending div, DONT REMOVE-->
+
+    <!--Elements that will be activated by JS-->
+    <div style="display: none;" id="startMenu">
+       <button id="menuBarAbout" class="menuBarBtns">
+            About
+       </button>
+       <button id="menuBarShutDown" class="menuBarBtns">Shutdown</button>
+    </div>
+
+    <div style="display: none;" id="aboutPopUp">
+        <section id="closeAbout">
+            <button id="closeAboutBtn" class="popUpClose"></button>
+        </section>
+        <img src="./assets/menubarlogo.png" id="aboutLogo">
+        <figcaption id="figAbout">
+           <b>Voltaic Model 101</b>
+            <br>
+            ©1984 Voltaic Technologies
+        </figcaption>
+    </div>
+
+    <div style="display: none;" id="shutdownPopUp">
+        <section id="closeAbout">
+            <button id="closeShutdownBtn" class="popUpClose"></button>
+        </section>
+        <h1>You are about to Shutdown the computer</h1>
+        <h2 id="countDownShutdown"></h2>
+        <section id="choicesShutdown">
+            <button id="confirmShutdown">Shutdown Now</button>
+            <button id="cancelShutdown">Cancel</button>
+        </section>
+    </div>
+
+
+    <div style="display: none;" id="shutdownConfirmed">
+        
+    </div>
+
+    <div style="display: none;" id="realStartMenu">
+      <section id="appCategories">
+              
+        </section>
+
+        <div id="rightSideContainer">
+            <input id="startMenuSearch" class="searchBar" type="text" placeholder="Search Apps">
+            <section id="appsOrSearch">
+                <ul id="appList">
+                    <li>
+                        <button class="startMenuBtns">
+                            Calendar
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                           VMail 
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                            Files
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                            Notes
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                            Settings
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                            System Monitor
+                        </button>
+                    </li>
+                    <li>
+                        <button class="startMenuBtns">
+                            Terminal
+                        </button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+    <div style="display: none;" id="gifsApplication" class="applicationWindow">
+        <section class="applicationOptions">
+           <section class="optionsContainer">
+             <button class="options close"></button>
+             <button class="options minimize"></button>
+             <button class="options fullscreen"></button>
+           </section>
+           <p class="appName">Gifs.vs</p>
+        </section>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
