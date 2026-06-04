@@ -352,7 +352,7 @@ label {
 }
 
 #appCategories {
-    background-color: pink;
+    background-color: var(--terminalBackground);
     width: 10.5rem;
     height: 15rem;
     display: flex;
@@ -362,7 +362,6 @@ label {
 #rightSideContainer {
     width: 10.5rem;
     height: 15rem;
-    background-color: aqua;
     border-top-right-radius: 0.75rem;
     display: flex;
     flex-direction: column;
@@ -374,7 +373,7 @@ label {
 }
 
 #appsOrSearch {
-    background-color: bisque;
+    background-color: var(--terminalBackground);
     height: 100%;
     overflow-y: scroll;
 }
